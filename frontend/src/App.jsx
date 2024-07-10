@@ -11,6 +11,7 @@ import Work from "./pages/Work";
 import Signin from "./pages/Signin";
 import Footnote from "./components/Footnote";
 import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
 export default function App() {
 
 
@@ -24,7 +25,7 @@ export default function App() {
         <Route path="/Blog" element={<Blog/>} />
         <Route path="/Contact" element={<Contact/>}/>
         <Route path="/Publications" element={<Publications/>} />
-        {/* <Route path="/Dashboard" element={<Dashboard/>}/> */}
+        <Route path="/Dashboard" element={<Dashboard/>}/>
         <Route path="/Work" element={<Work/>}/>
         <Route path="/Sign-up" element={<Signup/>}/>
         <Route path="/Sign-in" element={<Signin/>}/>
