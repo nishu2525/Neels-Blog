@@ -11,7 +11,7 @@ export default function Header() {
         <img src={logo} alt="logo" className="h-[4.2rem]" />
       </Link>
       <div className='flex gap-2 md:order-2'>
-        <Link to='/Sign-up'>
+        <Link to='/Sign-in'>
           <Button outline gradientDuoTone='purpleToPink' className="font-mon">
             Admin Login
           </Button>

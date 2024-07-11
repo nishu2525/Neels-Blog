@@ -1,14 +1,11 @@
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
-import {useDispatch,useSelector} from 'react-redux'
-import { signInStart,signInSuccess,signInFailure } from "../redux/user/userSlice";
+
 export default function Signup() {
 const [formData, setFormData]=useState({});
-// const [errorMessage, setErrorMessage] =useState(null);
-// const [loading,setLoading]=useState(false);
-const {loading,error:errorMessage}=useSelector(state=>state.user);
-const dispatch =useDispatch();
+const [errorMessage, setErrorMessage] =useState(null);
+const [loading,setLoading]=useState(false);
 const navigate=useNavigate();
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:e.target.value.trim()})
@@ -17,10 +14,11 @@ const navigate=useNavigate();
   const handleSubmit =async (e)=>{
     e.preventDefault();
     if(!formData.username || !formData.email || !formData.password){
-      return dispatch(signInFailure('Please fill all fields'))
+      return setErrorMessage('Please fill all fields')
     }
     try {
-      dispatch(signInStart());
+      setLoading(true);
+      setErrorMessage(null);
       const res= await fetch('/api/auth/signup',{
         method:'POST',
         headers:{'Content-Type' : 'application/json'},
@@ -28,17 +26,17 @@ const navigate=useNavigate();
       });
       const data =await res.json();
       if(data.success === false){
-       dispatch(signInFailure(data.message))
+        return setErrorMessage(data.message)
       }
-      // setLoading(false);
+      setLoading(false);
       if(res.ok){
-        dispatch(signInSuccess(data));
-        navigate('/Sign-in');
+        navigate('/Sign-in')
       }
     } catch (error) {
-      dispatch(signInFailure(error.message))
+      setErrorMessage(error.message)
+      setLoading(false)
         }
-  };
+  }
   
   return (
     <div className='mt-12'>
@@ -91,6 +89,7 @@ const navigate=useNavigate();
                 ):'Sign up'
               }
             </Button>
+            
           </form>
           <div className="flex gap-2 text-sm mt-4 ml-16">
             <span className="text-whiteText">Already have an account </span>

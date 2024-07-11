@@ -1,42 +1,45 @@
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { signInStart,signInSuccess,signInFailure } from "../redux/user/userSlice";
 
 export default function Signin() {
   const [formData, setFormData]=useState({});
-const [errorMessage, setErrorMessage] =useState(null);
-const [loading,setLoading]=useState(false);
+  const { loading, error: errorMessage } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+// const [errorMessage, setErrorMessage] =useState(null);
+// const [loading,setLoading]=useState(false);
 const navigate=useNavigate();
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:e.target.value.trim()})
   };
 
-  const handleSubmit =async (e)=>{
+  const handleSubmit =async (e)=> {
     e.preventDefault();
-    if(!formData.email || !formData.password){
-      return setErrorMessage('Please fill all fields')
+    if (!formData.email || !formData.password) {
+      return dispatch(signInFailure('Please fill all the fields'));
     }
     try {
-      setLoading(true);
-      setErrorMessage(null);
-      const res= await fetch('/api/auth/signin',{
-        method:'POST',
-        headers:{'Content-Type' : 'application/json'},
-        body:JSON.stringify(formData),
+      dispatch(signInStart());
+      const res = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      const data =await res.json();
-      if(data.success === false){
-        return setErrorMessage(data.message)
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(signInFailure(data.message));
       }
-      setLoading(false);
-      if(res.ok){
-        navigate('/Dashboard')
+
+      if (res.ok) {
+        dispatch(signInSuccess(data));
+        navigate('/Dashboard');
       }
     } catch (error) {
-      setErrorMessage(error.message)
-      setLoading(false)
-        }
-  }
+      dispatch(signInFailure(error.message));
+    }
+  };
   
   return (
     <div className='mt-12'>
@@ -62,7 +65,7 @@ const navigate=useNavigate();
               />
             </div>
             <div>
-              <Label value='Create Password' className='font-semibold ml-2 tracking-wider text-teal' />
+              <Label value='Password' className='font-semibold ml-2 tracking-wider text-teal' />
               <TextInput
                 type='password'
                 placeholder='Enter password *****'
@@ -71,15 +74,16 @@ const navigate=useNavigate();
               />
             </div>
             <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
-              {
-                loading ? (
-                  <>
-                  <Spinner size='sm'/>
-                  <span className="pl-3">Loading....</span>
-                  </>
-                ):'Sign in'
-              }
+            {loading ? (
+                <>
+                  <Spinner size='sm' />
+                  <span className='pl-3'>Loading...</span>
+                </>
+              ) : (
+                'Sign In'
+              )}
             </Button>
+            
           </form>
           <div className="flex gap-2 text-sm mt-4 ml-16">
             <span className="text-whiteText">Dont have an account </span>
