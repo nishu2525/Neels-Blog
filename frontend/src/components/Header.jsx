@@ -1,21 +1,40 @@
 // import { useState, useEffect } from 'react';
-import { Button, Navbar } from "flowbite-react";
+import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import logo from '../assets/WEBSITE_Pics/logo.png'
+import avatar from '../assets/WEBSITE_Pics/avatar.png'
 export default function Header() {
     const path = useLocation().pathname;
-  
+    const { currentUser } = useSelector((state) => state.user);
   return (
     <Navbar className='border-b-2 sticky top-0 z-10 bg-whiteText '>
       <Link to='/' className="" >
         <img src={logo} alt="logo" className="h-[4.2rem]" />
       </Link>
       <div className='flex gap-2 md:order-2'>
-        <Link to='/Sign-in'>
-          <Button outline gradientDuoTone='purpleToPink' className="font-mon">
-            Admin Login
-          </Button>
-        </Link>
+
+        {currentUser ? (
+          <Dropdown arrowIcon={false} inline label={
+            <Avatar alt='user' img={avatar} rounded />}>
+              <Dropdown.Header>
+              <span className='block text-sm'>@{currentUser.username}</span>
+              <span className='block text-sm font-medium truncate'>{currentUser.email}</span>
+            </Dropdown.Header>
+            <Link to={'/Dashboard?tab=profile'}>
+              <Dropdown.Item>Profile</Dropdown.Item>
+            </Link>
+            <Dropdown.Divider />
+            <Dropdown.Item>Sign out</Dropdown.Item>
+          </Dropdown>
+        ) :(
+            <Link to='/Sign-in'>
+            <Button outline gradientDuoTone='purpleToPink' className="font-mon">
+              Admin Login
+            </Button>
+          </Link>
+        )}
+        
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse className="text-2xl">
