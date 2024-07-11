@@ -12,6 +12,7 @@ import Signin from "./pages/Signin";
 import Footnote from "./components/Footnote";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
 export default function App() {
 
 
@@ -24,8 +25,10 @@ export default function App() {
         <Route path="/About" element={<About/>} />
         <Route path="/Blog" element={<Blog/>} />
         <Route path="/Contact" element={<Contact/>}/>
-        <Route path="/Publications" element={<Publications/>} />
+        <Route element={<PrivateRoute/>}>
         <Route path="/Dashboard" element={<Dashboard/>}/>
+        </Route>
+        <Route path="/Publications" element={<Publications/>} />
         <Route path="/Work" element={<Work/>}/>
         <Route path="/Sign-up" element={<Signup/>}/>
         <Route path="/Sign-in" element={<Signin/>}/>
