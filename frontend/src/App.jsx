@@ -13,6 +13,7 @@ import Footnote from "./components/Footnote";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import CreatePost from "./pages/CreatePost";
 export default function App() {
 
 
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/Contact" element={<Contact/>}/>
         <Route element={<PrivateRoute/>}>
         <Route path="/Dashboard" element={<Dashboard/>}/>
+        <Route path ='/create-post' element={<CreatePost/>}/>
         </Route>
         <Route path="/Publications" element={<Publications/>} />
         <Route path="/Work" element={<Work/>}/>

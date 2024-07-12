@@ -22,7 +22,7 @@ export default function Dashboard() {
       </div>
 
       {/* Rigt Side */}
-      <div>
+      <div className="flex-grow">
         {tab== 'profile' &&  <DashProfile/>}
       </div>
     </div>
