@@ -1,5 +1,5 @@
 import Post from "../models/post.model";
-import { errorHandler } from "../utils/error"
+import { errorHandler } from "../utils/error.js"
 
 export const create = async (req, res, next)=>{
     if(!req.body.title || !req.body.content){
