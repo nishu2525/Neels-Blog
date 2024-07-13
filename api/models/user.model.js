@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+// import avatar from '../../frontend/src/assets/WEBSITE_Pics/avatar.png'
 const userSchema = new mongoose.Schema(
     {
         username: {
@@ -15,10 +16,15 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
           },
-          isAdmin:{
-            type:Boolean,
-            default:true,
-          }
+          profilePicture:{
+            type:String,
+            default:
+              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+          },
+          // isAdmin:{
+          //   type:Boolean,
+          //   default:true,
+          // }
         },
         { timestamps: true }
 );

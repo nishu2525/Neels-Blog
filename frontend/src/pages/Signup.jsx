@@ -40,8 +40,8 @@ const navigate=useNavigate();
   }
   
   return (
-    <div className='mt-12'>
-      <div className='flex justify-start mt-3 p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-16'>
+    <div className='mt-2'>
+      <div className='flex justify-start mt-0 p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-16'>
         {/* left Side */}
         <div className='flex-1'>
           

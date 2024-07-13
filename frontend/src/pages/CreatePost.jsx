@@ -30,7 +30,7 @@ export default function CreatePost() {
             className='flex-1'/>
             <Select>
             <option value='uncategorized'>Select a category</option>
-            <option value='blog'>BLog</option>
+            <option value='blog'>Blog</option>
             <option value='publications'>Publications</option>
             </Select>
             </div>
