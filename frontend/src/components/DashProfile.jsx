@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import avatar from '../assets/WEBSITE_Pics/avatar.png'
+// import avatar from '../assets/WEBSITE_Pics/avatar.png'
 import { Button, TextInput } from 'flowbite-react';
 import { signoutSuccess } from '../redux/user/userSlice'; 
 import { useDispatch } from 'react-redux';
@@ -30,7 +30,7 @@ const handleSignout =async ()=>{
       <h1 className='my-7 text-center font-semibold text-2xl capitalize text-whiteText'>profile</h1>
       <form className="flex flex-col gap-4">
        <div className='w-32 h-32 my-4 mx-44'>
-       <img src={avatar} alt=""  className=' cursor-pointer  border-4 border-whiteText object-cover rounded-full'/>
+       <img src={currentUser.profilePicture} alt=""  className=' cursor-pointer  border-4 border-whiteText object-cover rounded-full'/>
        </div>
        <TextInput type='text' id='username' placeholder='username'  defaultValue={currentUser.username}/>
        <TextInput type='email' id='email' placeholder='email'  defaultValue={currentUser.email}/>

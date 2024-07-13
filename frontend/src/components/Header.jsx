@@ -3,7 +3,8 @@ import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import logo from '../assets/WEBSITE_Pics/logo.png'
-import avatar from '../assets/WEBSITE_Pics/avatar.png'
+
+
 export default function Header() {
     const path = useLocation().pathname;
     const { currentUser } = useSelector((state) => state.user);
@@ -16,7 +17,7 @@ export default function Header() {
 
         {currentUser ? (
           <Dropdown arrowIcon={false} inline label={
-            <Avatar alt='user' img={avatar} rounded />}>
+            <Avatar alt='user' img={currentUser.profilePicture} rounded />}>
               <Dropdown.Header>
               <span className='block text-sm'>@{currentUser.username}</span>
               <span className='block text-sm font-medium truncate'>{currentUser.email}</span>

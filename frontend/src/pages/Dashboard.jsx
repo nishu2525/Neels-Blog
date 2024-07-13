@@ -13,9 +13,11 @@ export default function Dashboard() {
     if (tabFromUrl) {
       setTab(tabFromUrl);
     }
+    // console.log(tabFromUrl);
   }, [location.search]);
   return (
     <div className="h-full flex flex-col md:flex-row">
+
       {/* Sidebar */}
       <div className="md:w-56">
         <DashSidebar />
