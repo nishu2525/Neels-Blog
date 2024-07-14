@@ -73,7 +73,7 @@ console.log(formData);
     
           if (res.ok) {
              setPublishError(null);
-            //  navigate(`/post/${data.slug}`);
+             navigate(`/post/${data.slug}`);
           }
         } catch (error) {
          setPublishError('Something went wrong');
