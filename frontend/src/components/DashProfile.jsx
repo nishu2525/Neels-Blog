@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Alert, Button, Modal, TextInput } from 'flowbite-react';
-import { updateStart,updateFailure,updateSuccess ,deleteUserSuccess,deleteUserStart,deleteUserFailure} from '../redux/user/userSlice';
+import { updateStart,updateFailure,updateSuccess ,deleteUserSuccess,deleteUserStart,deleteUserFailure,signoutSuccess} from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getDownloadURL, getStorage,ref,uploadBytesResumable,} from 'firebase/storage';
@@ -12,7 +12,7 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 
 export default function DashProfile() {
-  const { currentUser, error } = useSelector((state) => state.user);
+  const { currentUser,  } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
@@ -147,7 +147,7 @@ const handleSignout =async ()=>{
       console.log(data.message);
     }
     else{
-      // dispatch(signoutSuccess());
+       dispatch(signoutSuccess());
     }
   } catch (error) {
     console.log(error.message);
@@ -155,7 +155,7 @@ const handleSignout =async ()=>{
 }
   return (
     <div className=' max-w-lg mx-auto p-3 w-full'>
-      <h1 className='my-3 text-center font-semibold text-2xl capitalize text-whiteText'>profile</h1>
+      <h1 className=' text-center font-semibold text-2xl capitalize text-whiteText'>profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input type="file" accept='image/*' hidden onChange={handleImageChange} ref={filePickerRef}/>
        <div  className='relative w-32 h-32 self-center cursor-pointer shadow-md overflow-hidden rounded-full' onClick={() => filePickerRef.current.click()}>
@@ -213,20 +213,20 @@ const handleSignout =async ()=>{
 
       </div>
       {updateUserSucess && (
-        <Alert color='success' className='mt-2'>
+        <Alert color='success' className='mt-2 mb-3'>
           {updateUserSucess}
         </Alert>
       )}
       {updateUserError && (
-        <Alert color='failure' className='mt-2'>
+        <Alert color='failure' className='mt-2 mb-3'>
           {updateUserError}
         </Alert>
       )}
-      {error && (
-        <Alert color='failure' className='mt-2'>
+      {/* {error && (
+        <Alert color='failure' className='mt-2 mb-3'>
           {error}
         </Alert>
-      )}
+      )} */}
       <Modal show={showModal} onClose={()=>setShowModal(false)} popup size='md'>
       <Modal.Header />
         <Modal.Body>
