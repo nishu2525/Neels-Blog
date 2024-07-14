@@ -49,7 +49,7 @@ export default function DashPosts() {
     }
   };
 
-  
+
   return (
     <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
       {currentUser.isAdmin && userPosts.length > 0 ? (
@@ -109,7 +109,7 @@ export default function DashPosts() {
           {showMore && (
             <button
               onClick={handleShowMore}
-              className='w-full text-teal self-center text-sm py-7'
+              className='w-full text-lightText self-center text-sm py-7'
             >
               Show more
             </button>
