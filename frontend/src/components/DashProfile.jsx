@@ -124,7 +124,7 @@ const handleSignout =async ()=>{
       console.log(data.message);
     }
     else{
-      dispatch(signoutSuccess());
+      // dispatch(signoutSuccess());
     }
   } catch (error) {
     console.log(error.message);
