@@ -15,6 +15,7 @@ import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./pages/CreatePost";
 import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
+import UpdatePost from "./pages/UpdatePost";
 export default function App() {
 
 
@@ -32,6 +33,7 @@ export default function App() {
         </Route>
         <Route element={<OnlyAdminPrivateRoute/>}>
         <Route path ='/create-post' element={<CreatePost/>}/>
+        <Route path ='/update-post/:postId' element={<UpdatePost/>}/>
         </Route>
         <Route path="/Publications" element={<Publications/>} />
         <Route path="/Work" element={<Work/>}/>
