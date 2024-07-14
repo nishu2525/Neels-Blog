@@ -21,10 +21,10 @@ const userSchema = new mongoose.Schema(
             default:
               'https://png.pngtree.com/png-clipart/20220401/ourmid/pngtree-d-rendering-gentleman-male-avatar-with-black-suit-and-red-butterfly-png-image_4521690.png',
           },
-          // isAdmin:{
-          //   type:Boolean,
-          //   default:true,
-          // }
+          isAdmin:{
+            type:Boolean,
+            default:false,
+          }
         },
         { timestamps: true }
 );
