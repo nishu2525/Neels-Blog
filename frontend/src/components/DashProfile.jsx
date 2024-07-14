@@ -12,7 +12,7 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 
 export default function DashProfile() {
-  const { currentUser,  } = useSelector((state) => state.user);
+  const { currentUser, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
@@ -199,13 +199,15 @@ const handleSignout =async ()=>{
        <TextInput type='text' id='username' placeholder='username'  defaultValue={currentUser.username} onChange={handleChange}/>
        <TextInput type='email' id='email' placeholder='email'  defaultValue={currentUser.email} onChange={handleChange}/>
        <TextInput type='password' id='password' placeholder='********'  onChange={handleChange}/>
-       <Button type='submit' gradientDuoTone='purpleToBlue' outline>
-          Update
+       <Button type='submit' gradientDuoTone='purpleToBlue' outline disabled={loading || imageFileUploading}>
+         {loading ?'loading... ': 'Update'}
         </Button>
-   <Link to ='/create-post'>
-   <Button type='button'outline gradientDuoTone='purpleToPink'   className='w-full'>
-           Create a post
-        </Button></Link>
+        {currentUser.isAdmin &&
+       <Link to ='/create-post'>
+       <Button type='button'outline gradientDuoTone='purpleToPink'   className='w-full'>
+               Create a post
+            </Button></Link>}
+  
         </form>
       <div className='text-red-600 flex justify-between mt-4'>
          <span className='cursor-pointer' onClick={()=>setShowModal(true)}>Delete Account</span> 
