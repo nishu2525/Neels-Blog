@@ -164,7 +164,7 @@ const handleSignout =async ()=>{
             <CircularProgressbar
               value={imageFileUploadProgress || 0}
               text={`${imageFileUploadProgress}%`}
-              strokeWidth={5}
+              strokeWidth={3}
               styles={{
                 root: {
                   width: '100%',
@@ -184,7 +184,7 @@ const handleSignout =async ()=>{
           <img
             src={imageFileUrl || currentUser.profilePicture}
             alt='user'
-            className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
+            className={`rounded-full w-full h-full object-cover border-4 border-lightText ${
               imageFileUploadProgress &&
               imageFileUploadProgress < 100 &&
               'opacity-60'
