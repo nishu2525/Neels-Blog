@@ -44,7 +44,7 @@ export default function CreatePost() {
             <ReactQuill theme="snow"  placeholder="Write Something To post..." className="text-whiteText h-52 mb-12" required/>
             <Button type='submit' gradientDuoTone='purpleToPink'>
             Publish</Button>
-         </form>
+            </form>
     </div>
   )
 }

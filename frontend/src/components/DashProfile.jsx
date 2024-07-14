@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Alert, Button, Modal, TextInput } from 'flowbite-react';
 import { updateStart,updateFailure,updateSuccess ,deleteUserSuccess,deleteUserStart,deleteUserFailure,signoutSuccess} from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link,  } from 'react-router-dom';
 import {getDownloadURL, getStorage,ref,uploadBytesResumable,} from 'firebase/storage';
 import { useEffect, useRef, useState } from 'react';
 import { app } from '../firebase';
@@ -25,7 +25,7 @@ export default function DashProfile() {
   // console.log(imageFileUploadProgress,imageFileUploadError);
   const filePickerRef = useRef();
   const dispatch=useDispatch();
-
+  // const navigate=useNavigate();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -148,6 +148,7 @@ const handleSignout =async ()=>{
     }
     else{
        dispatch(signoutSuccess());
+      //  navigate('/Sign-in')
     }
   } catch (error) {
     console.log(error.message);
