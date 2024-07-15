@@ -16,11 +16,12 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./pages/CreatePost";
 import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
 import UpdatePost from "./pages/UpdatePost";
+import PostPage from "./pages/PostPage";
 export default function App() {
 
 
   return (
-    <div className="flex flex-col bg-dark_gray h-screen">
+    <div className="flex flex-col bg-dark_gray min-h-screen">
     <BrowserRouter >
     <Header/>
       <Routes>
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/Work" element={<Work/>}/>
         <Route path="/Sign-up" element={<Signup/>}/>
         <Route path="/Sign-in" element={<Signin/>}/>
+        <Route path='/post/:postSlug' element={<PostPage/>}/>
       </Routes>
       <Footnote/>
     </BrowserRouter>

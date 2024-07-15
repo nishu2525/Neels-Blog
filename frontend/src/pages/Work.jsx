@@ -69,7 +69,7 @@ const workData = [
 ]
 export default function Work() {
   return (
-    <div className="bg-dark_theme text-lightText pl-12 pr-12 pb-4 min-h-screen">
+    <div className="bg-dark_theme text-lightText pl-12 pr-12 pb-4 min-h-screen mb-8">
   <h1 className="text-3xl font-semibold pt-12 mb-10 text-[var(--bg-exdark)]" id="workHeading">
     Work Experience
   </h1>

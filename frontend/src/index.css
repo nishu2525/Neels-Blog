@@ -5,3 +5,32 @@
 .ql-editor{
     font-size: 1.05rem;
 }
+.post-content p{
+    margin-bottom: 0.5rem;
+    color: whitesmoke;
+}
+.post-content h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: monospace;
+    margin: 1.5rem 0;
+     color: whitesmoke;
+}
+.post-content h2{
+    font-size: 1.4rem;
+    font-family: monospace;
+    margin: 1.5rem 0;
+     color: whitesmoke;
+}
+.post-content h3{
+    font-size: 1.4rem;
+    font-family: monospace;
+    margin: 1.5rem 0;
+     color: whitesmoke;
+}
+.post-content a{
+    text-decoration: none;
+    color: teal;
+    cursor: pointer;
+}
+.post-content a:hover{text-decoration: underline;}
