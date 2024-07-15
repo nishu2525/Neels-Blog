@@ -94,8 +94,8 @@ export default function DashUsers() {
                       className='w-10 h-10 object-cover rounded-full'
                     />
                   </Table.Cell>
-                  <Table.Cell className="text-heading_blue">{user.username}</Table.Cell>
-                  <Table.Cell className="text-heading_blue">{user.email}</Table.Cell>
+                  <Table.Cell className="text-teal">{user.username}</Table.Cell>
+                  <Table.Cell className="text-teal">{user.email}</Table.Cell>
                   <Table.Cell>
                     {user.isAdmin ? (
                       <FaCheck className='text-green-500' />

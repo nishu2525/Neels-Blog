@@ -1,6 +1,20 @@
-import Blog_card from '../components/Blog_card'
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
+import PostCard from "../components/PostCard";
 
-function Blog() {
+export default function Blog() {
+  const[posts ,setPosts] =useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await fetch('/api/post/getposts');
+      const data = await res.json();
+      setPosts(data);
+    };
+    fetchPosts();
+  }, []);
+
+
   return (
     <div className="flex flex-col items-center justify-center p-5 pb-12 bg-dark_gray">
       <div className="flex flex-col items-center justify-center ">
@@ -14,16 +28,25 @@ function Blog() {
           Here, you&apos;ll find insights, trends, and tips on marketing, branding, and strategy. Dive into articles that not only inform but also inspire action and innovation in the ever-evolving world of marketing. Stay tuned for stories from my professional journey, guest posts, and much more. Let&apos;s learn, grow, and succeed together!
         </p>
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <p className="text-lightText">Your Blog&apos;s will Come Here</p>
-        <div className="flex gap-2 ml-16 mb-8">
-          <Blog_card />
-          <Blog_card />
-          <Blog_card />
-        </div>
+      <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7'>
+      {posts && posts.length > 0 && (
+          <div className='flex flex-col gap-6'>
+            <h2 className='text-2xl font-semibold text-center'>Recent Posts</h2>
+            <div className='flex flex-wrap gap-4'>
+              {posts.map((post) => (
+                <PostCard key={post._id} post={post} />
+              ))}
+            </div>
+            <Link
+              to={'/search'}
+              className='text-lg text-teal-500 hover:underline text-center'
+            >
+              View all posts
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
-export default Blog

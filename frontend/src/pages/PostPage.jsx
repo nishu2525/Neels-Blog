@@ -1,7 +1,8 @@
 import { Button, Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
-
+import PostCard from "../components/PostCard";
+import Divider from "@mui/material/Divider";
 useParams
 
 export default function PostPage() {
@@ -9,7 +10,9 @@ export default function PostPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [post, setPost] = useState(null);
-    // console.log(post);
+    const [recentPosts, setRecentPosts] = useState(null);
+    console.log(post);
+    console.log(error);
     useEffect(()=>{
         const fetchPost =async()=>{
             try {
@@ -34,19 +37,35 @@ export default function PostPage() {
         fetchPost()
     },[postSlug]);
 
+    useEffect(() => {
+      try {
+        const fetchRecentPosts = async () => {
+          const res = await fetch(`/api/post/getposts?limit=3`);
+          const data = await res.json();
+          if (res.status==200) {
+            setRecentPosts(data.posts);
+          }
+        };
+        fetchRecentPosts();
+      } catch (error) {
+        console.log(error.message);
+      }
+    }, []);
+
     if(loading)return
     <div className='flex justify-center items-center '>
     <Spinner size='xl' />
   </div>
   return (
-    <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen mb-16'>
+    <>
+    <main className='p-3 flex flex-col mx-auto min-h-screen mb-12'>
          <h1 className='text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl text-lightText capitalize'>
         {post && post.title}
         <Link
         to={`/search?category=${post && post.category}`}
-        className='self-center mt-5'
+        className='self-center'
       >
-        <Button color='gray' pill size='xs'>
+        <Button  pill size='xs' className='ml-4 mt-6'>
           {post && post.category}
         </Button>
       </Link>
@@ -56,7 +75,7 @@ export default function PostPage() {
         className='mt-10 p-3 max-h-[600px] w-full object-cover'
       />
       </h1>
-      <div className='flex justify-between p-3 border-b border-slate-500 mx-auto w-full max-w-2xl text-xs text-light_gray'>
+      <div className='flex justify-between p-3 border-b border-teal mx-auto w-full max-w-2xl text-xs text-light_gray'>
         <span>{post && new Date(post.createdAt).toLocaleDateString()}</span>
         <span className='italic'>
           {post && (post.content.length / 1000).toFixed(0)} mins read
@@ -72,14 +91,15 @@ export default function PostPage() {
         {/* <CallToAction /> */}
       {/* </div> */}
       {/* <CommentSection postId={post._id} /> */}
-
-      {/* <div className='flex flex-col justify-center items-center mb-5'>
-        <h1 className='text-xl mt-5'>Recent articles</h1>
+<div>  <Divider className=' h-1 bg-lightText w-[100%] ' /></div>
+   <div className='flex flex-col justify-center items-center mb-5'> 
+        <h1 className='text-xl mt-5 text-amazon_yellow'>Recent articles</h1>
         <div className='flex flex-wrap gap-5 mt-5 justify-center'>
-          {/* {recentPosts && */}
-            {/* recentPosts.map((post) => <PostCard key={post._id} post={post} />)} */}
-        {/* </div> 
-      </div> */}
+       {recentPosts && 
+          recentPosts.map((post) => <PostCard key={post._id}  post={post} />)} 
+      </div> 
+      </div> 
     </main>
+    </>
   )
 }

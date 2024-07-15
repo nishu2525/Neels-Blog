@@ -125,7 +125,7 @@ console.log(formData);
             onChange={(value) => {
                 setFormData({ ...formData, content: value });
           }}/>
-            <Button type='submit' gradientDuoTone='purpleToPink'>
+            <Button type='submit' gradientDuoTone='purpleToPink' className="mb-16">
             Publish</Button>
             {publishError && (
           <Alert className='mt-2 mb-6' color='failure'>

@@ -1,6 +1,5 @@
 
-import Blog_card from '../components/Blog_card'
-import Publi_card from "../components/Publi_card";
+
 
 export default function Publications() {
   return (
@@ -18,14 +17,7 @@ export default function Publications() {
     </div>
     <div className="flex flex-col items-center justify-center">
       <p className="text-lightText">Your Publications will come here</p>
-      <div className="flex gap-2 ml-12">
-        <Blog_card />
-        <Blog_card />
-        <Blog_card />
-      </div>
-      <div className="mt-1 mb-2">
-        <Publi_card />
-      </div>
+      
     </div>
   </div>
   );
