@@ -1,6 +1,6 @@
 // import { useState, useEffect } from 'react';
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import logo from '../assets/WEBSITE_Pics/logo.png'
 import { signoutSuccess } from '../redux/user/userSlice';
@@ -10,7 +10,7 @@ export default function Header() {
     const path = useLocation().pathname;
     const { currentUser } = useSelector((state) => state.user);
     const dispatch=useDispatch();
-    const navigate=useNavigate();
+    
 
     const handleSignout = async () => {
       try {
@@ -29,7 +29,7 @@ export default function Header() {
     };
 
   return (
-    <Navbar className='border-b-2 sticky top-0 z-10 bg-whiteText '>
+    <Navbar className='border-b-2 sticky top-0 z-50 bg-whiteText '>
       <Link to='/' className="" >
         <img src={logo} alt="logo" className="h-[4.2rem]" />
       </Link>
@@ -58,20 +58,20 @@ export default function Header() {
         
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse className="text-2xl">
-      <Navbar.Link active={path==='/About'} className="text-lg hover:text-teal" as={"div"}>
+      <Navbar.Collapse className="text-2xl">  
+      <Navbar.Link active={path==='/About'} className="text-lg text-dark_gray  hover:text-teal" as={"div"}>
           <Link to='/About' >About</Link>
         </Navbar.Link>
-         <Navbar.Link active={path==='/Blog'}className="text-lg  hover:text-teal"  as={"div"}>
+         <Navbar.Link active={path==='/Blog'}className="text-lg text-dark_gray   hover:text-teal"  as={"div"}>
           <Link to='/Blog' >Blog</Link>
         </Navbar.Link>
-        <Navbar.Link active={path==='/Publications'} className="text-lg  hover:text-teal" as={"div"}>
+        <Navbar.Link active={path==='/Publications'} className="text-lg  text-dark_gray   hover:text-teal" as={"div"}>
           <Link to='/Publications' >Publications</Link>
         </Navbar.Link>
-         <Navbar.Link active={path==='/Work'} className="text-lg  hover:text-teal" as={"div"}>
+         <Navbar.Link active={path==='/Work'} className="text-lg text-dark_gray hover:text-teal" as={"div"}>
           <Link to='/Work' >Work</Link>
         </Navbar.Link>
-         <Navbar.Link active={path==='/Contact'} className="text-lg  hover:text-teal" as={"div"}>
+         <Navbar.Link active={path==='/Contact'} className="text-lg text-dark_gray hover:text-teal" as={"div"}>
           <Link to='/Contact' >Contact</Link>
         </Navbar.Link>
       </Navbar.Collapse>

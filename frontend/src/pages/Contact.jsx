@@ -1,23 +1,24 @@
-
 import { Button, Label, TextInput } from "flowbite-react";
-
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
 export default function Contact() {
   return (
-    <div className=" mt-12 ">
+    <div className=" mt-8 ">
     <h1 className="text-3xl font-semibold mb-8 ml-12  text-lightText" >Get in Touch with us</h1>
     <div className="flex flex-col md:flex-row md:items-center justify-start p-3 max-w-3xl mx-auto gap-16">
       {/* Left Side */}
-      <div className="flex-1">
+      <div className="flex-1 -mt-6">
         <p className="text-sm  font-serif font-semibold text-center text-whiteText tracking-wider">
           I would love to hear from you! Whether you have a question, a
           collaboration idea, or just want to connect, feel free to reach out.
           You can contact me via email at
+        <a href="mailto:Bedabrata.bagchi@gmail.com" className="block text-teal text-center mt-1 tracking-wide hover:underline">Bedabrata.bagchi@gmail.com <EmailIcon/></a> 
+        <p>or on <a href="https://www.linkedin.com/in/bedabrata-bagchi" className="text-teal hover:underline">LinkedIn <LinkedInIcon/></a></p>
         </p>
-        <a href="mailto:Bedabrata.bagchi@gmail.com" className="block text-teal text-center mt-1 tracking-wide">Bedabrata.bagchi@gmail.com</a> 
       </div>
       {/* Right Side */}
       <div className="flex-1">
-        <form className="flex flex-col gap-4 -mt-6">
+        <form className="flex flex-col gap-4 -mt-6" action="https://formspree.io/f/mzzpzyqr" method="POST">
           <p className="text-lg  font-serif font-semibold text-center text-teal">Write us a query</p>
           <div>
             <Label className="font-semibold ml-2 tracking-wider text-teal">Name</Label>
@@ -26,6 +27,8 @@ export default function Contact() {
               placeholder="Enter Your Name"
               id="Name"
               className="block w-full mt-1 rounded-md"
+              name="Name"
+
             />
           </div>
           <div>
@@ -33,8 +36,9 @@ export default function Contact() {
             <TextInput
               type="email"
               placeholder="Enter Your Email"
-              id="email"
+              id="Email"
               className="block w-full mt-1  rounded-md"
+              name="Email"
             />
           </div>
           <div>
@@ -43,6 +47,7 @@ export default function Contact() {
               placeholder="Enter Your Message"
               id="Message"
               className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
+              name="Message"
               rows="4"
             />
           </div>

@@ -7,7 +7,7 @@ import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
 // import Dashboard from "./pages/Dashboard"
 import Work from "./pages/Work";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Signin from "./pages/Signin";
 import Footnote from "./components/Footnote";
 import Signup from "./pages/Signup";
