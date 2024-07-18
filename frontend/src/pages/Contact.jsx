@@ -8,17 +8,17 @@ export default function Contact() {
     <div className="flex flex-col md:flex-row md:items-center justify-start p-3 max-w-3xl mx-auto gap-16">
       {/* Left Side */}
       <div className="flex-1 -mt-6">
-        <p className="text-sm  font-serif font-semibold text-center text-whiteText tracking-wider">
+        <span className="text-sm  font-serif font-semibold text-center text-whiteText tracking-wider">
           I would love to hear from you! Whether you have a question, a
           collaboration idea, or just want to connect, feel free to reach out.
           You can contact me via email at
         <a href="mailto:Bedabrata.bagchi@gmail.com" className="block text-teal text-center mt-1 tracking-wide hover:underline">Bedabrata.bagchi@gmail.com <EmailIcon/></a> 
         <p>or on <a href="https://www.linkedin.com/in/bedabrata-bagchi" className="text-teal hover:underline">LinkedIn <LinkedInIcon/></a></p>
-        </p>
+        </span>
       </div>
       {/* Right Side */}
       <div className="flex-1">
-        <form className="flex flex-col gap-4 -mt-6" action="https://formspree.io/f/mzzpzyqr" method="POST">
+        <form className="flex flex-col gap-4 -mt-6" action="https://formspree.io/f/xnnanwnr" method="POST">
           <p className="text-lg  font-serif font-semibold text-center text-teal">Write us a query</p>
           <div>
             <Label className="font-semibold ml-2 tracking-wider text-teal">Name</Label>

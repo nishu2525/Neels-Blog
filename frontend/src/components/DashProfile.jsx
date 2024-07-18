@@ -200,12 +200,12 @@ const handleSignout =async ()=>{
        <TextInput type='text' id='username' placeholder='username'  defaultValue={currentUser.username} onChange={handleChange}/>
        <TextInput type='email' id='email' placeholder='email'  defaultValue={currentUser.email} onChange={handleChange}/>
        <TextInput type='password' id='password' placeholder='********'  onChange={handleChange}/>
-       <Button type='submit' gradientDuoTone='purpleToBlue' outline disabled={loading || imageFileUploading}>
+       <Button type='submit' gradientDuoTone='purpleToBlue'  disabled={loading || imageFileUploading} className=''>
          {loading ?'loading... ': 'Update'}
         </Button>
         {currentUser.isAdmin &&
        <Link to ='/create-post'>
-       <Button type='button'outline gradientDuoTone='purpleToPink'   className='w-full'>
+       <Button type='button' gradientDuoTone='purpleToPink' className='w-full hover:bg-'>
                Create a post
             </Button></Link>}
   

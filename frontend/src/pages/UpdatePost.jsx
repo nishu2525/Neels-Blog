@@ -21,25 +21,21 @@ export default function UpdatePost() {
     const { postId } = useParams();
 
     useEffect(() => {
-        try {
-          const fetchPost = async () => {
-            const res = await fetch(`/api/post/getposts?postId=${postId}`);
-            const data = await res.json();
-            if (!res.ok) {
-              console.log(data.message);
-              setPublishError(data.message);
-              return;
-            }
-            if (res.ok) {
-              setPublishError(null);
+      const fetchPost = async () => {
+          try {
+              const res = await fetch(`/api/post/getposts?postId=${postId}`);
+              const data = await res.json();
+              if (!res.ok) {
+                  setPublishError(data.message);
+                  return;
+              }
               setFormData(data.posts[0]);
-            }
-          };
-          fetchPost();
-        } catch (error) {
-          console.log(error.message);
-        }
-      }, [postId]);
+          } catch (error) {
+              console.log(error.message);
+          }
+      };
+      fetchPost();
+  }, [postId]);
 
     const handleUpdloadImage = async () => {
         try {
@@ -81,6 +77,8 @@ export default function UpdatePost() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Current User:", currentUser);
+        console.log("Form Data:", formData);
         try {
           const res = await fetch(`/api/post/updatepost/${formData._id}/${currentUser._id}`, {
             method: 'PUT',

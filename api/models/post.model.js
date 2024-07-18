@@ -21,6 +21,7 @@ const postSchema = new mongoose.Schema(
           },
           category: {
             type: String,
+            enum: ['blog', 'publications'],
             default: 'uncategorized',
           },
           slug: {

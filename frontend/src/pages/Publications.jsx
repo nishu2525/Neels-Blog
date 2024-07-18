@@ -6,14 +6,15 @@ import PostCard from "../components/PostCard";
 export default function Publications() {
   const[posts,setPosts]=useState([])
 
-  useEffect(()=>{
-     const fetchPosts =async()=>{
-       const res =await fetch ('/api/post/getPosts');
-       const data=await res.json();
-       setPosts(data.posts)
-     }
-     fetchPosts();
-  },[])
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await fetch('/api/post/getposts?category=publications');
+      const data = await res.json();
+      setPosts(data.posts);
+    };
+    fetchPosts();
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center pl-12 pr-12 pb-4">
     <div className="flex flex-col items-center justify-center p-12">

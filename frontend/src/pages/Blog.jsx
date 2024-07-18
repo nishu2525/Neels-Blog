@@ -2,18 +2,17 @@ import { useEffect, useState } from "react"
 import PostCard from "../components/PostCard";
 
 export default function Blog() {
-  const[posts,setPosts]=useState([])
+  const[posts,setPosts]=useState([]);
 
-  useEffect(()=>{
-     const fetchPosts =async()=>{
-       const res =await fetch ('/api/post/getPosts');
-       const data=await res.json();
-       setPosts(data.posts)
-     }
-     fetchPosts();
-  },[])
-
-
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await fetch('/api/post/getposts?category=blog');
+      const data = await res.json();
+      setPosts(data.posts);
+    };
+    fetchPosts();
+  }, []);
+  
   return (
     <div className="flex flex-col items-center justify-center p-5 pb-12 bg-dark_gray">
       <div className="flex flex-col items-center justify-center ">
@@ -32,7 +31,7 @@ export default function Blog() {
           <div className='flex flex-col gap-6'>
             <h2 className='text-2xl font-semibold text-center text-whiteText'>Recent Blogs</h2>
             <div className='flex flex-wrap gap-4'>
-              {posts.map((post) => (
+            {posts.map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}
             </div>
