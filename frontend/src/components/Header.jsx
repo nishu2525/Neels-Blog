@@ -1,32 +1,37 @@
 // import { useState, useEffect } from 'react';
-import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
-import { Link, useLocation } from "react-router-dom";
+import { Avatar, 
+  // Button,
+   Dropdown, Navbar } from "flowbite-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import logo from '../assets/WEBSITE_Pics/logo.png'
 import { signoutSuccess } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
-
+import { persistor } from '../redux/store.js';
 export default function Header() {
     const path = useLocation().pathname;
     const { currentUser } = useSelector((state) => state.user);
     const dispatch=useDispatch();
-    
+    const navigate=useNavigate();
 
-    const handleSignout = async () => {
+    const handleSignout =async ()=>{
       try {
-        const res = await fetch('/api/user/signout', {
-          method: 'POST',
-        });
-        const data = await res.json();
-        if (!res.ok) {
+        const res= await fetch('/api/user/signout',{
+          method:'POST',
+        })
+        const data =await res.json();
+        if(!res.ok){
           console.log(data.message);
-        } else {
-          dispatch(signoutSuccess());
+        }
+        else{
+           dispatch(signoutSuccess());
+           await persistor.purge()
+          navigate('/Sign-in')
         }
       } catch (error) {
         console.log(error.message);
       }
-    };
+    }
 
   return (
     <Navbar className='border-b-2 sticky top-0 z-50 bg-whiteText '>
@@ -50,12 +55,12 @@ export default function Header() {
           </Dropdown>
         ) :(
           <>
+          {/* <Link to='/Sign-in'>
+           <Button  gradientDuoTone='purpleToPink' className="font-mon">
+            Admin Login
+         </Button>
+       </Link> */}
           </>
-          //   <Link to='/Sign-in'>
-          //   <Button  gradientDuoTone='purpleToPink' className="font-mon">
-          //     Admin Login
-          //   </Button>
-          // </Link>
         )}
         
         <Navbar.Toggle />
@@ -86,20 +91,3 @@ export default function Header() {
 }
 
 
-{/* <Navbar.Collapse>
-      <Navbar.Link as={"div"} className={getLinkClasses("/About")} onClick={() => setActivePath("/About")}>
-          <Link to='/About'>About</Link>
-        </Navbar.Link>
-         <Navbar.Link as={"div"} className={getLinkClasses("/Blog")} onClick={() => setActivePath("/Blog")}>
-          <Link to='/Blog'>Blog</Link>
-        </Navbar.Link>
-        <Navbar.Link as={"div"} className={getLinkClasses("/Publications")} onClick={() => setActivePath("/Publications")}>
-          <Link to='/Publications'>Publications</Link>
-        </Navbar.Link>
-         <Navbar.Link as={"div"} className={getLinkClasses("/Work")} onClick={() => setActivePath("/Work")}>
-          <Link to='/Work'>Work</Link>
-        </Navbar.Link>
-         <Navbar.Link as={"div"} className={getLinkClasses("/Contact")} onClick={() => setActivePath("/Contact")}>
-          <Link to='/Contact'>Contact</Link>
-        </Navbar.Link>
-      </Navbar.Collapse> */}

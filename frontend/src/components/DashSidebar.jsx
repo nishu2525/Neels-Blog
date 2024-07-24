@@ -1,13 +1,15 @@
 import { Sidebar } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import {  HiUser,HiArrowSmRight,HiDocumentText,HiOutlineUserGroup,HiChartPie} from 'react-icons/hi';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {signoutSuccess} from '../redux/user/userSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
+import { persistor } from '../redux/store.js';
 
 export default function DashSidebar() {
   const location =useLocation();
   const [tab,setTab] =useState('')
+  const navigate=useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -18,24 +20,27 @@ export default function DashSidebar() {
   }, [location.search]);
 
   const dispatch=useDispatch();
+
+  const handleSignout =async ()=>{
+    try {
   
-    const handleSignout =async ()=>{
-      try {
-    
-        const res= await fetch('/api/user/signout',{
-          method:'POST',
-        })
-        const data =await res.json();
-        if(!res.ok){
-          console.log(data.message);
-        }
-        else{
-           dispatch(signoutSuccess());
-        }
-      } catch (error) {
-        console.log(error.message);
+      const res= await fetch('/api/user/signout',{
+        method:'POST',
+      })
+      const data =await res.json();
+      if(!res.ok){
+        console.log(data.message);
       }
+      else{
+         dispatch(signoutSuccess());
+         await persistor.purge()
+        navigate('/Sign-in')
+      }
+    } catch (error) {
+      console.log(error.message);
     }
+  }
+
 
   return (
     <Sidebar className='w-full md:w-56'>
