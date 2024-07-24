@@ -157,7 +157,7 @@ const handleSignout =async ()=>{
   }
 }
   return (
-    <div className=' max-w-lg mx-auto p-3 w-full'>
+    <div className=' max-w-lg mx-auto p-3 w-full mb-12'>
       <h1 className=' text-center font-semibold text-2xl capitalize text-whiteText'>profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input type="file" accept='image/*' hidden onChange={handleImageChange} ref={filePickerRef}/>

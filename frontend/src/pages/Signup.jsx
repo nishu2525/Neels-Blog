@@ -41,15 +41,15 @@ const navigate=useNavigate();
   }
   
   return (
-    <div className='mt-2'>
-      <div className='flex justify-start mt-0 p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-16'>
+    <div className='my-auto'>
+      <div className='flex justify-start1 p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-8'>
         {/* left Side */}
         <div className='flex-1'>
           <img src={art_img} alt=""  className="h-full"/>
         </div>
         {/* Right Side  */}
-        <div className='flex-1'>
-          <form className='flex flex-col gap-4 mt-20' onSubmit={handleSubmit}>
+        <div className='flex-1 mb-12'>
+          <form className='flex flex-col gap-4 mt-8' onSubmit={handleSubmit}>
             <div>
               <Label value='Username' className='font-semibold ml-2 tracking-wider text-teal' />
               <TextInput
