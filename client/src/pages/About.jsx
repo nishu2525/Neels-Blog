@@ -1,8 +1,8 @@
 // import tlclogo from '../assets/WEBSITE_Pics/tlc logo.jpg'
 export default function About() {
   return (
-    <div className="flex flex-col items-center justify-center pl-12 pr-12  sm:p-2 mb-12 lg:mb-0">
-      <div className="flex flex-col items-center justify-center p-12 sm:p-2">
+    <div className="flex flex-col items-center justify-center lg:p-5 pb-12 bg-dark_gray p-3">
+      <div className="flex flex-col items-center justify-center max-w-5xl mx-auto">
         <h1 className="text-3xl font-semibold my-8  text-lightText">
         Welcome to my professional corner on the web!
         </h1>
@@ -13,7 +13,7 @@ export default function About() {
           As the founder of TheLearningCorporate.com and AdriConsultingGroup.com, I aim to foster growth and development in the corporate and consulting landscapes. I also take pride in being a visiting faculty at NMIMS, Mumbai, where I mentor MBA students in the nuances of marketing.
         </p>
       </div>
-      <div className="flex flex-row items-center justify-evenly gap-2 sm:mb-3">
+      <div className="flex flex-row items-center justify-between gap-2 mb-12">
         <a href="https://www.thelearningcorporate.com/" target='_blank' className='flex flex-row  text-amazon_yellow items-center hover:underline text-xl font-semibold'>
        <p>The Learning Corporate</p>
         </a>

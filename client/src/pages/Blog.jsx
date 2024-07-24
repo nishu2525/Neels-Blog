@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import PostCard from "../components/PostCard";
-import { Divider } from "@mui/material";
+// import { Divider } from "@mui/material";
 
 export default function Blog() {
   const[posts,setPosts]=useState([]);
@@ -28,10 +28,10 @@ export default function Blog() {
         </p>
       </div>
 
-      <div className="flex flex-row items-center mr-[63rem] py-4">
+     {/*  <div className="flex flex-row items-center mr-[63rem] py-4">
         <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat"> Recent Post </p>
         <Divider  className=' h-1 bg-light_color w-[98%] mx-1'/>
-       </div>
+       </div> */}
 
       <div className='max-w-7xl mx-auto flex flex-col gap-12 py-7 sm:px-0 lg:px-16 mb-4'>
       {posts && posts.length > 0 && (

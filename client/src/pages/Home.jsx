@@ -71,12 +71,12 @@ const Home = () => {
        
       <div className="max-w-6xl mx-auto my-6 max-h-2xl"><Slider/></div>
 
-      <div className="flex flex-row items-center mr-[63rem] py-2">
-        <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat"> Recent Post </p>
-        <Divider  className=' h-1 bg-light_color w-[98%] mx-1'/>
+      <div className="flex flex-row items-center justify-center mr-[58rem]">
+        <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat "> Recent Post </p>
+        <Divider  className=' h-1 bg-light_color w-[98%] '/>
        </div>
 
-        <div className='max-w-7xl mx-auto flex flex-col gap-8 py-7 md:px-16 mb-4 sm:px-3'>
+        <div className='max-w-7xl mx-auto flex flex-col gap-8  md:px-16 mb-12 sm:px-3'>
           {posts && posts.length > 0 && (
             <div className='flex flex-col gap-6'>
               <div className='flex flex-wrap gap-4 py-7'>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Footnote() {
   return (
     <Footer container className="h-[8vh] fixed bottom-0 bg-whiteText  text-base rounded-none z-50 flex flex-col lg:flex-row items-center justify-center">
-  <Footer.Copyright href="#" by="Neel Bagchi" year={2024} />
+  <Footer.Copyright href="#" by="Bedabrata Bagchi" year={2024} />
   <Footer.LinkGroup className="mr-2 ">
     <Link to='/Contact'>
     <p className="mr-3 text-dark_gray  hover:text-teal hover:unde">Connect with me @ </p>
