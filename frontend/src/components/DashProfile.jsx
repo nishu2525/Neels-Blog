@@ -2,13 +2,14 @@ import { useSelector } from 'react-redux';
 import { Alert, Button, Modal, TextInput } from 'flowbite-react';
 import { updateStart,updateFailure,updateSuccess ,deleteUserSuccess,deleteUserStart,deleteUserFailure,signoutSuccess} from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
-import { Link,  } from 'react-router-dom';
+import { Link, useNavigate,  } from 'react-router-dom';
 import {getDownloadURL, getStorage,ref,uploadBytesResumable,} from 'firebase/storage';
 import { useEffect, useRef, useState } from 'react';
 import { app } from '../firebase';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { persistor } from '../redux/store.js';
 
 
 export default function DashProfile() {
@@ -25,7 +26,7 @@ export default function DashProfile() {
   // console.log(imageFileUploadProgress,imageFileUploadError);
   const filePickerRef = useRef();
   const dispatch=useDispatch();
-  // const navigate=useNavigate();
+  const navigate=useNavigate();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -148,7 +149,8 @@ const handleSignout =async ()=>{
     }
     else{
        dispatch(signoutSuccess());
-      //  navigate('/Sign-in')
+       await persistor.purge()
+      navigate('/Sign-in')
     }
   } catch (error) {
     console.log(error.message);

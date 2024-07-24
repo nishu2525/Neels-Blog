@@ -75,10 +75,10 @@ export default function DashUsers() {
               <Table.HeadCell>Date created </Table.HeadCell>
               <Table.HeadCell>User image </Table.HeadCell>
               <Table.HeadCell>Username </Table.HeadCell>
+              <Table.HeadCell>User email id </Table.HeadCell>
               <Table.HeadCell>Admin </Table.HeadCell>
-              <Table.HeadCell>Delete </Table.HeadCell>
               <Table.HeadCell>
-                <span className='hidden md:block'>Edit</span>
+                <span className='hidden md:block'>Delete</span>
               </Table.HeadCell>
             </Table.Head>
             {users.map((user) => (

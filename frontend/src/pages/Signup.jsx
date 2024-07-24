@@ -2,6 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import art_img from '../assets/WEBSITE_Pics/Art.png'
 
 export default function Signup() {
 const [formData, setFormData]=useState({});
@@ -44,11 +45,7 @@ const navigate=useNavigate();
       <div className='flex justify-start mt-0 p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-16'>
         {/* left Side */}
         <div className='flex-1'>
-          
-          <p className='text-sm  font-serif font-semibold text-center text-whiteText tracking-wider'>
-            Sign up form for Neel&apos;s Blog website for the admin Lorem ipsum
-            dolor, sit amet consectetur adipisicing elit.{" "}
-          </p>
+          <img src={art_img} alt=""  className="h-full"/>
         </div>
         {/* Right Side  */}
         <div className='flex-1'>

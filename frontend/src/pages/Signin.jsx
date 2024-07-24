@@ -4,7 +4,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart,signInSuccess,signInFailure } from "../redux/user/userSlice";
 import OAuth from "../components/OAuth";
-
+import art_img from '../assets/WEBSITE_Pics/Art.png'
 export default function Signin() {
   const [formData, setFormData]=useState({});
   const { loading, error: errorMessage } = useSelector((state) => state.user);
@@ -47,11 +47,7 @@ const navigate=useNavigate();
       <div className='flex justify-start mt-3 p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-16'>
         {/* left Side */}
         <div className='flex-1'>
-          
-          <p className='text-sm  font-serif font-semibold text-center text-whiteText tracking-wider'>
-            Sign in form for Neel&apos;s Blog website for the admin Lorem ipsum
-            dolor, sit amet consectetur adipisicing elit.{" "}
-          </p>
+          <img src={art_img} alt=""  className="h-full"/>
         </div>
         {/* Right Side  */}
         <div className='flex-1'>
@@ -86,7 +82,7 @@ const navigate=useNavigate();
             </Button>
             <OAuth/>
           </form>
-          <div className="flex gap-2 text-sm mt-4 ml-16">
+          <div className="flex gap-2 text-sm mt-4 ">
             <span className="text-whiteText">Dont have an account </span>
             <Link to="/Sign-up" className="text-teal">Sign up
             </Link>

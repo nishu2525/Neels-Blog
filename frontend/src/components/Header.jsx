@@ -49,25 +49,31 @@ export default function Header() {
             <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
           </Dropdown>
         ) :(
-            <Link to='/Sign-in'>
-            <Button outline gradientDuoTone='purpleToPink' className="font-mon">
-              Admin Login
-            </Button>
-          </Link>
+          <>
+          </>
+          //   <Link to='/Sign-in'>
+          //   <Button  gradientDuoTone='purpleToPink' className="font-mon">
+          //     Admin Login
+          //   </Button>
+          // </Link>
         )}
         
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse className="text-2xl">  
+        <Navbar.Link active={path==='/Work'} className="text-lg text-dark_gray hover:text-teal" as={"div"}>
+          <Link to='/' >Home</Link>
+        </Navbar.Link>
       <Navbar.Link active={path==='/About'} className="text-lg text-dark_gray  hover:text-teal" as={"div"}>
           <Link to='/About' >About</Link>
         </Navbar.Link>
          <Navbar.Link active={path==='/Blog'}className="text-lg text-dark_gray   hover:text-teal"  as={"div"}>
           <Link to='/Blog' >Blog</Link>
         </Navbar.Link>
-        <Navbar.Link active={path==='/Publications'} className="text-lg  text-dark_gray   hover:text-teal" as={"div"}>
+        {/* These we will use in later time*/}
+        {/* <Navbar.Link active={path==='/Publications'} className="text-lg  text-dark_gray   hover:text-teal" as={"div"}>
           <Link to='/Publications' >Publications</Link>
-        </Navbar.Link>
+        </Navbar.Link> */}
          <Navbar.Link active={path==='/Work'} className="text-lg text-dark_gray hover:text-teal" as={"div"}>
           <Link to='/Work' >Work</Link>
         </Navbar.Link>

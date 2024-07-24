@@ -12,7 +12,7 @@ export default function PostPage() {
     const [post, setPost] = useState(null);
     const [recentPosts, setRecentPosts] = useState(null);
     console.log(post);
-    console.log(error);
+    console.log("Error",error);
     useEffect(()=>{
         const fetchPost =async()=>{
             try {

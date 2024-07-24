@@ -1,24 +1,42 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useSelector } from 'react-redux';
 import {
     HiArrowNarrowUp,
     HiDocumentText,
     HiOutlineUserGroup,
   } from 'react-icons/hi';
-  import { Button, Table } from 'flowbite-react';
-  import { Link } from 'react-router-dom';
+import { Button, Table } from 'flowbite-react';
+import { Link } from 'react-router-dom';
+import { VisitCountContext } from "../App";
+
 
 export default function DashboardComp() {
-    const [users, setUsers] = useState([]);
-//   const [comments, setComments] = useState([]);
+  const [users, setUsers] = useState([]);
   const [posts, setPosts] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalPosts, setTotalPosts] = useState(0);
-//   const [totalComments, setTotalComments] = useState(0);
   const [lastMonthUsers, setLastMonthUsers] = useState(0);
   const [lastMonthPosts, setLastMonthPosts] = useState(0);
-//   const [lastMonthComments, setLastMonthComments] = useState(0);
-const { currentUser } = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
+  const [visitCount] = useContext(VisitCountContext);
+  // const [count, setCount] = useState(0);
+
+
+//   useEffect(() => {
+//     const totalUpdate = async () => {
+//       try {
+//         const response = await fetch("/api/visit/visit-count");
+//         const data = await response.json();
+//         setCount(data.count);
+//       } catch (error) {
+//         console.error('Error fetching visit count:', error);
+//       }
+//     };
+
+//     totalUpdate();
+//   },[])
+// console.log(count);
+
 useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -52,9 +70,22 @@ useEffect(() => {
         fetchPosts();
       }
 }, [currentUser]);
+
+
   return (
-    <div className='p-3 md:mx-auto'>
-         <div className='flex-wrap flex gap-4 justify-center'>
+    <div className='p-3 md:mx-auto mb-8'>
+         <div className='flex-wrap flex gap-4 justify-evenly'>
+
+         <div className='flex flex-col p-3 bg-light_gray gap-4 md:w-72 w-full rounded-md shadow-md'>
+          <div className='flex justify-between'>
+            <div className=''>
+              <h3 className='text-heading_blue text-md uppercase'>Total Viewers </h3>
+              <p className='text-2xl'>{visitCount}</p>
+            </div>
+            <HiOutlineUserGroup className='bg-teal  text-dark_theme rounded-full text-5xl p-3 shadow-lg' />
+          </div>
+        </div>
+
         <div className='flex flex-col p-3 bg-light_gray gap-4 md:w-72 w-full rounded-md shadow-md'>
           <div className='flex justify-between'>
             <div className=''>

@@ -53,7 +53,7 @@ export default function Contact() {
           </div>
           <Button
             type="submit"
-            className="py-2 px-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-md hover:from-cyan-600 hover:to-blue-600"
+            className="py-2 sm:mb-12 px-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-md hover:from-cyan-600 hover:to-blue-600"
           >
             Connect
           </Button>

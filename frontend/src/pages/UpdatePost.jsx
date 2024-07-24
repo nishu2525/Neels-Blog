@@ -30,6 +30,7 @@ export default function UpdatePost() {
                   return;
               }
               setFormData(data.posts[0]);
+              console.log(postId);
           } catch (error) {
               console.log(error.message);
           }
@@ -80,13 +81,15 @@ export default function UpdatePost() {
         console.log("Current User:", currentUser);
         console.log("Form Data:", formData);
         try {
-          const res = await fetch(`/api/post/updatepost/${formData._id}/${currentUser._id}`, {
+          const res = await fetch(`/api/post/updatepost/${postId}/${currentUser._id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
           });
+          console.log(formData._id);
+          console.log(currentUser._id);
           console.log(res);
           const data = await res.json();
           if (!res.status==201) {
@@ -117,7 +120,7 @@ export default function UpdatePost() {
                    setFormData({ ...formData, category: e.target.value })}>
             <option value='uncategorized'>Select a category</option>
             <option value='blog'>Blog</option>
-            <option value='publications'>Publications</option>
+            <option value='publications'disabled>Publications</option>
             </Select>
             </div>
             <div className='flex gap-4 items-center justify-between border-1 border-teal border p-3'>

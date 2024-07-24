@@ -95,7 +95,7 @@ console.log(formData);
                    setFormData({ ...formData, category: e.target.value })}>
             <option value='uncategorized'>Select a category</option>
             <option value='blog'>Blog</option>
-            <option value='publications'>Publications</option>
+            <option value='publications'disabled>Publications</option>
             </Select>
             </div>
             <div className='flex gap-4 items-center justify-between border-1 border-teal border p-3'>

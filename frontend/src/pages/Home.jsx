@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import photo from "../assets/WEBSITE_Pics/Photo.jpeg";
 import Divider from "@mui/material/Divider";
 import PostCard from "../components/PostCard";
 import { Link } from "react-router-dom";
-// import Carousel from "../components/Carousel";
 import AttachEmailIcon from '@mui/icons-material/AttachEmail';
 import Slider from "../components/Slider";
+import { VisitCountContext } from "../App";
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [, setVisitCount] = useContext(VisitCountContext);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -18,12 +20,28 @@ const Home = () => {
     fetchPosts();
   }, []);
 
-  //  let slides=[]
+
+  useEffect(() => {
+    const updateVisitCount = async () => {
+      try {
+        const response = await fetch('/api/visit/visit-count');
+        const data = await response.json();
+        setVisitCount(data.count);
+      } catch (error) {
+        console.error('Error updating visit count:', error);
+      }
+    };
+    updateVisitCount();
+  }, [setVisitCount]);
+
   return (
     <div className='flex flex-col items-center justify-center bg-dark_gray min-h-screen'>
-      <section className='flex flex-col md:flex-row items-center  justify-evenly w-[90%] mb-8'>
-        <div className='flex flex-col justify-center p-2 md:mt-20 h-full w-3/3 md:w-2/3 '>
-          <div className='text-center  tracking-widest  md:pl-12 md:pr-12 h-3/4 font-montserrat text-2xl text-amazon_yellow font-semibold '>
+    
+      <section className='flex flex-col-reverse md:flex-row items-center  justify-evenly w-[94%] md:mb-32  md:mt-6'>
+        <div className='flex flex-col justify-center p-2 md:mt-2 h-full w-3/3 md:w-2/4 '>
+          <div className='text-left font-montserrat text-md font-extralight text-amazon_yellow md:pl-0 md:pr-12'>
+          <h1 className="mt-24 text-6xl font-semibold text-amazon_yellow sm:mt-12">Marketing Simplified</h1>
+          <br />
             <p>
               Marketing isn&apos;t just about selling products or crafting
               catchy slogans. It&apos;s about understanding people—their hopes,
@@ -32,38 +50,36 @@ const Home = () => {
               transactions. In a world where consumers are bombarded with
               messages every second, the real challenge for us as marketers is
               to be authentic, genuine, and impactful.
-            </p>
-          </div>
-          <Divider className=' h-1 bg-light_color w-[95%] ' />
-
-          <div className='text-center font-montserrat text-md font-extralight text-amazon_yellow md:pl-2 md:pr-12 pt-4'>
-            <p>
               Innovation does&apos;t happen in isolation. It thrives when we come
-              together, share ideas, challenge each other, and push boundaries.
-              Collaboration is the heart of creativity. The best ideas emerge
-              when diverse minds work in harmony, each bringing a unique
-              perspective. I urge you to seek out collaborations, build teams
-              that challenge you, and always remain open to new
-              ideas. <Link to={'/Contact'} className="text-teal hover:underline hover:italic">  Lets talk! <AttachEmailIcon/> </Link>
+              together, share ideas, challenge each other, and push boundaries. <br /> <br /> <Link to={'/Contact'} className="text-teal hover:underline hover:italic">  Lets talk! <AttachEmailIcon/> </Link>
             </p>
           </div>
         </div>
-        <div className=' flex justify-center items-center rounded-full bg-white h-3/4 mt-12 '>
+          <div className=' flex justify-center items-center rounded-full bg-white h-3/4 mt-[3rem] mr-2 '>
           <img
             src={photo}
             alt='Creative'
-            className='rounded-full  object-fit shadow-lg h-[30rem] w-[30rem] '
+            className='rounded-full  object-fit shadow-lg md:h-[25rem] w-[20rem] h-[28rem]'
           />
         </div>
       </section>
-      <div className="max-w-full mx-auto my-6 max-h-svh"><Slider/></div>
-        <div className='max-w-full mx-auto flex flex-col gap-8 py-7 md:px-20 mb-16'>
+
+       <div className="flex flex-row items-center mr-[64rem]">
+        <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat"> Gallery </p>
+        <Divider  className=' h-1 bg-light_color w-[95%] mx-4'/>
+       </div>
+       
+      <div className="max-w-6xl mx-auto my-6 max-h-2xl"><Slider/></div>
+
+      <div className="flex flex-row items-center mr-[63rem] py-2">
+        <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat"> Recent Post </p>
+        <Divider  className=' h-1 bg-light_color w-[98%] mx-1'/>
+       </div>
+
+        <div className='max-w-7xl mx-auto flex flex-col gap-8 py-7 md:px-16 mb-4 sm:px-3'>
           {posts && posts.length > 0 && (
             <div className='flex flex-col gap-6'>
-              <h2 className='text-2xl font-semibold text-center  text-amazon_yellow underline'>
-                Recent Posts
-              </h2>
-              <div className='flex flex-wrap gap-4'>
+              <div className='flex flex-wrap gap-4 py-7'>
                 {posts.map((post) => (
                   <PostCard key={post._id} post={post} />
                 ))}
