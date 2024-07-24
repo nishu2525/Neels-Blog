@@ -8,6 +8,7 @@ import logo from '../assets/WEBSITE_Pics/logo.png'
 import { signoutSuccess } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { persistor } from '../redux/store.js';
+import { useEffect } from "react";
 export default function Header() {
     const path = useLocation().pathname;
     const { currentUser } = useSelector((state) => state.user);
@@ -33,6 +34,10 @@ export default function Header() {
       }
     }
 
+    useEffect(() => {
+      window.scrollTo(0, 0);
+  }, [path]);
+  
   return (
     <Navbar className='border-b-2 sticky top-0 z-50 bg-whiteText '>
       <Link to='/' className="" >
@@ -75,10 +80,12 @@ export default function Header() {
          <Navbar.Link active={path==='/Blog'}className="text-lg text-dark_gray   hover:text-teal"  as={"div"}>
           <Link to='/Blog' >Blog</Link>
         </Navbar.Link>
+
         {/* These we will use in later time*/}
         {/* <Navbar.Link active={path==='/Publications'} className="text-lg  text-dark_gray   hover:text-teal" as={"div"}>
           <Link to='/Publications' >Publications</Link>
         </Navbar.Link> */}
+
          <Navbar.Link active={path==='/Work'} className="text-lg text-dark_gray hover:text-teal" as={"div"}>
           <Link to='/Work' >Work</Link>
         </Navbar.Link>
