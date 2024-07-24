@@ -4,11 +4,11 @@ import EmailIcon from '@mui/icons-material/Email';
 export default function Contact() {
   return (
     <div className=" mt-8 ">
-    <h1 className="text-3xl font-semibold mb-8 ml-12  text-lightText" >Get in Touch with us</h1>
+    <h1 className="text-3xl font-semibold mb-8 ml-12  text-lightText" >Get in touch </h1>
     <div className="flex flex-col md:flex-row md:items-center justify-start p-3 max-w-3xl mx-auto gap-16">
       {/* Left Side */}
       <div className="flex-1 -mt-6">
-        <span className="text-sm  font-serif font-semibold text-center text-whiteText tracking-wider">
+        <span className="text-sm  font-serif font-semibold text-center text-whiteText tracking-wider flex flex-col">
           I would love to hear from you! Whether you have a question, a
           collaboration idea, or just want to connect, feel free to reach out.
           You can contact me via email at

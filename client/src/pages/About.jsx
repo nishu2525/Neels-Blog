@@ -13,7 +13,7 @@ export default function About() {
           As the founder of TheLearningCorporate.com and AdriConsultingGroup.com, I aim to foster growth and development in the corporate and consulting landscapes. I also take pride in being a visiting faculty at NMIMS, Mumbai, where I mentor MBA students in the nuances of marketing.
         </p>
       </div>
-      <div className="flex flex-row items-center justify-between gap-2 mb-12">
+      <div className="flex flex-row items-center justify-between gap-2 my-12">
         <a href="https://www.thelearningcorporate.com/" target='_blank' className='flex flex-row  text-amazon_yellow items-center hover:underline text-xl font-semibold'>
        <p>The Learning Corporate</p>
         </a>
