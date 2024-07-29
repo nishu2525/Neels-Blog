@@ -64,16 +64,16 @@ const Home = () => {
         </div>
       </section>
 
-       <div className="flex flex-row items-center mr-[64rem]">
-        <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat"> Gallery </p>
-        <Divider  className=' h-1 bg-light_color w-[95%] mx-4'/>
+       <div className="flex flex-row items-center mr-[57rem]">
+        <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat mr-2"> Gallery </p>
+        <Divider  className=' h-1 bg-light_color w-36 '/>
        </div>
        
       <div className="max-w-6xl mx-auto my-6 max-h-2xl"><Slider/></div>
 
-      <div className="flex flex-row items-center justify-center mr-[58rem]">
-        <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat "> Recent Post </p>
-        <Divider  className=' h-1 bg-light_color w-[98%] '/>
+      <div className="flex flex-row items-center justify-center mr-[57rem]">
+        <p className=" text-amazon_yellow  text-2xl font-semibold font-montserrat mr-2">Recent Posts</p>
+        <Divider  className=' h-1 bg-light_color w-20 '/>
        </div>
 
         <div className='max-w-7xl mx-auto flex flex-col gap-8  md:px-16 mb-12 sm:px-3'>
