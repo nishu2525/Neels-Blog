@@ -36,7 +36,7 @@ export default function App() {
 
     fetchVisitCount();
   }, []);
-console.log();
+console.log( visitCount);
 
   return (
     <VisitCountContext.Provider value={[visitCount, setVisitCount]}>

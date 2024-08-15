@@ -68,10 +68,10 @@ export default function Header() {
           </>
         )}
         
-        <Navbar.Toggle />
+       
       </div>
       <Navbar.Collapse className="text-2xl">  
-        <Navbar.Link active={path==='/Work'} className="text-lg text-dark_gray hover:text-teal" as={"div"}>
+        <Navbar.Link active={path==='/'} className="text-lg text-dark_gray hover:text-teal" as={"div"}>
           <Link to='/' >Home</Link>
         </Navbar.Link>
       <Navbar.Link active={path==='/About'} className="text-lg text-dark_gray  hover:text-teal" as={"div"}>
