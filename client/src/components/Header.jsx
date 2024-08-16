@@ -67,7 +67,7 @@ export default function Header() {
        </Link> */}
           </>
         )}
-        
+         <Navbar.Toggle />  
        
       </div>
       <Navbar.Collapse className="text-2xl">  
